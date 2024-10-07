@@ -78,6 +78,15 @@ EOF
     echo "Contents of the unzipped directory:"
     ls "$UNZIPPED_FOLDER"
 
+    # Add session suppression preferences to the newly created Firefox profile
+    cat <<EOF > "$UNZIPPED_FOLDER/user.js"
+user_pref("browser.sessionstore.resume_from_crash", false);
+user_pref("browser.startup.page", 0);  # 0 means a blank page at startup
+user_pref("browser.startup.homepage_override.mstone", "ignore");  # Prevent first-run tabs
+user_pref("browser.tabs.warnOnClose", false);  # Prevent warnings on tab closure
+user_pref("browser.warnOnQuit", false);  # Prevent warnings on quitting
+EOF
+
     # Open Firefox with the new profile (path to the unzipped profile folder)
     nohup firefox --no-remote --new-instance --profile "$UNZIPPED_FOLDER" &
 

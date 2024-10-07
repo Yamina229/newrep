@@ -13,6 +13,19 @@ def random_word(min_len, max_len):
     length = random.randint(min_len, max_len)
     return ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
 
+# New Step: Detect the tab button using 'tab_button.png'
+try:
+    tab_button_location = pyautogui.locateCenterOnScreen('tab_button.png', confidence=0.8)
+    if tab_button_location is not None:
+        print("Tab button detected, clicking at (1342, 125)...")
+        click_at(1342, 125)
+        time.sleep(2)
+    else:
+        print("Tab button not detected, proceeding to Step 1...")
+except Exception as e:
+    print(f"Error detecting tab button: {e}")
+    print("Proceeding to Step 1...")
+
 # Step 1: Previous tasks
 time.sleep(2)
 click_at(322, 82)
@@ -119,4 +132,3 @@ click_at(253, 40)
 time.sleep(2)
 click_at(420, 315)
 time.sleep(2)
-

@@ -35,8 +35,9 @@ time.sleep(random.uniform(4, 7))
 click_locations_1 = [(1326, 183), (1336, 184), (1341, 182), (1333, 189), (1332, 174)]
 click_at(*random.choice(click_locations_1))
 time.sleep(2)
-for _ in range(15):
+for _ in range(16):
     pyautogui.press("tab")
+    time.sleep(1)
 pyautogui.press("enter")
 time.sleep(random.uniform(4, 5))
 for _ in range(7):

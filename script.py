@@ -116,18 +116,44 @@ for _ in range(14):
 pyautogui.press("enter")
 time.sleep(random.uniform(5, 6))
 
-# Step 9: Make arbitrary mouse click and wait 20 seconds
-click_locations_11 = [(884, 360), (901, 357), (917, 360), (933, 361), 
-                      (945, 359), (952, 360), (914, 361)]
+# Step 9: Perform mouse click at (x:35, y:184), sleep 2 seconds
+click_at(35, 184)
+time.sleep(2)
+
+# Perform random mouse click on predefined locations (Click Location 11)
+click_locations_11 = [(50, 393), (63, 394), (82, 391), (108, 393), 
+                      (148, 393), (172, 394), (88, 391)]
 click_at(*random.choice(click_locations_11))
+time.sleep(8)
+# Perform random mouse click on second set of predefined locations (Click Location 12)
+click_locations_12 = [(1232, 290), (1260, 291), (1274, 289), (1292, 289), 
+                      (1307, 288), (1316, 290), (1260, 290)]
+click_at(*random.choice(click_locations_12))
 time.sleep(2)
+# Step 10: Press the Tab key 11 times, with a 1-second delay between each press
+for _ in range(11):
+    pyautogui.press("tab")
+    time.sleep(1)
 
-# Step 10: Mouse click at (899, 454) and wait 20 seconds
-click_at(868, 396)
+# Press Enter, sleep 1 second
+pyautogui.press("enter")
+time.sleep(1)
+
+# Press the down arrow key once, sleep 1 second, then press Enter
+pyautogui.press("down")
+time.sleep(1)
+pyautogui.press("enter")
+time.sleep(3)
+
+# Press the down arrow key 3 times
+for _ in range(3):
+    pyautogui.press("down")
+    time.sleep(1)
 time.sleep(2)
-click_at(899, 454)
+click_locations_13 = [(928, 536), (950, 532), (968, 535), (990, 533), 
+                      (1004, 533), (1013, 530)]
+click_at(*random.choice(click_locations_13))
 time.sleep(20)
-
 # Step 11: Mouse click at (253, 40)
 click_at(253, 40)
 time.sleep(2)

@@ -29,6 +29,7 @@ user_pref("browser.startup.page", 0);  # 0 means a blank page at startup
 user_pref("browser.startup.homepage_override.mstone", "ignore");  # Prevent first-run tabs
 user_pref("browser.tabs.warnOnClose", false);  # Prevent warnings on tab closure
 user_pref("browser.warnOnQuit", false);  # Prevent warnings on quitting
+user_pref("browser.sessionstore.max_tabs_undo", 0);  # No tab history restore
 EOF
     
     # Open Firefox with the copied URL using the temporary profile and get its PID
@@ -85,10 +86,17 @@ user_pref("browser.startup.page", 0);  # 0 means a blank page at startup
 user_pref("browser.startup.homepage_override.mstone", "ignore");  # Prevent first-run tabs
 user_pref("browser.tabs.warnOnClose", false);  # Prevent warnings on tab closure
 user_pref("browser.warnOnQuit", false);  # Prevent warnings on quitting
+user_pref("browser.sessionstore.max_tabs_undo", 0);  # No tab history restore
 EOF
 
-    # Open Firefox with the new profile (path to the unzipped profile folder)
-    nohup firefox --no-remote --new-instance --profile "$UNZIPPED_FOLDER" &
+    # Remove any session history or restore-related files in the profile directory
+    rm -f "$UNZIPPED_FOLDER/sessionstore.js"
+    rm -f "$UNZIPPED_FOLDER/sessionCheckpoints.json"
+    rm -f "$UNZIPPED_FOLDER/recovery.jsonlz4"
+    rm -f "$UNZIPPED_FOLDER/recovery.baklz4"
+
+    # Open Firefox with the new profile (path to the unzipped profile folder) and clear the cache
+    nohup firefox --no-remote --new-instance --profile "$UNZIPPED_FOLDER" --purgecaches &
 
     # Cleanup: remove the temporary profile
     rm -rf "$TEMP_PROFILE"

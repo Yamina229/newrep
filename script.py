@@ -7,7 +7,7 @@ import string
 def click_at(x, y):
     pyautogui.moveTo(x, y)
     pyautogui.click()
-
+time.sleep(4)
 # Function to generate a random word of given length
 def random_word(min_len, max_len):
     length = random.randint(min_len, max_len)

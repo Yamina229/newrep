@@ -22,8 +22,14 @@ if [ "$url" != "null" ]; then
     TEMP_PROFILE=$(mktemp -d)
     echo "Created temporary profile: $TEMP_PROFILE"
     
-    # Disable Firefox session restore for the temporary profile
-    echo 'user_pref("browser.sessionstore.resume_from_crash", false);' > "$TEMP_PROFILE/user.js"
+    # Disable Firefox session restore and startup homepage for the temporary profile
+    cat <<EOF > "$TEMP_PROFILE/user.js"
+user_pref("browser.sessionstore.resume_from_crash", false);
+user_pref("browser.startup.page", 0);  # 0 means a blank page at startup
+user_pref("browser.startup.homepage_override.mstone", "ignore");  # Prevent first-run tabs
+user_pref("browser.tabs.warnOnClose", false);  # Prevent warnings on tab closure
+user_pref("browser.warnOnQuit", false);  # Prevent warnings on quitting
+EOF
     
     # Open Firefox with the copied URL using the temporary profile and get its PID
     nohup firefox --no-remote --new-instance --profile "$TEMP_PROFILE" "$url" &

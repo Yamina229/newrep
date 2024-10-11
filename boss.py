@@ -33,7 +33,7 @@ if __name__ == "__main__":
     # Step 3: Detect the browser button via browser.py script
     time.sleep(18)
     detect_button_via_script('browser.py')
-
+    time.sleep(5)
     # Step 4: Detect the desktop button via desktop.py script
     detect_button_via_script('desktop.py')
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # URL of the central server that provides the unique link
-SERVER_URL="https://b1b878cd-2bda-4cf0-8009-838ae44df5e5.deepnoteproject.com/get_url"
+SERVER_URL="https://9776b5d1-e199-4b8e-a8d7-ccb31c3adc5a.deepnoteproject.com/get_url"
 
 # Make a request to the server and get the JSON response
 response=$(curl -s $SERVER_URL)

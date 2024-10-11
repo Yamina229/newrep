@@ -31,7 +31,7 @@ if __name__ == "__main__":
     print("Docker command typed and executed.")
 
     # Step 3: Detect the browser button via browser.py script
-    time.sleep(18)
+    time.sleep(25)
     detect_button_via_script('browser.py')
     time.sleep(5)
     # Step 4: Detect the desktop button via desktop.py script

@@ -32,6 +32,7 @@ click_at(322, 82)
 pyautogui.write("www.github.com")
 pyautogui.press("enter")
 time.sleep(random.uniform(4, 7))
+time.sleep(10)
 click_locations_1 = [(1326, 183), (1336, 184), (1341, 182), (1333, 189), (1332, 174)]
 click_at(*random.choice(click_locations_1))
 time.sleep(2)

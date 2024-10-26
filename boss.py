@@ -56,6 +56,5 @@ if __name__ == "__main__":
     pyautogui.write("bash kok")
     pyautogui.press("enter")
     time.sleep(5)
-    pyautogui.click(1324, 11)
-    print("Desktop actions completed.")
+ 
     

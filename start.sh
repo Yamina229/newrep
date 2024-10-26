@@ -19,7 +19,7 @@ pip install opencv-python-headless
 pip install pyperclip
 
 # Run gofile.sh
- python3 gofile.py
+bash gofile.sh
 
 # Check if gofile.sh executed successfully
 if [ $? -ne 0 ]; then

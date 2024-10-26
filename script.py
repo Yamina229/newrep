@@ -32,7 +32,27 @@ click_at(322, 82)
 pyautogui.write("www.github.com")
 pyautogui.press("enter")
 time.sleep(random.uniform(4, 7))
-time.sleep(10)
+# Here you will incorporate sign  detection button
+try:
+    sign_button_location = pyautogui.locateCenterOnScreen('sign_button.png', confidence=0.8)
+    if sign_button_location is not None:
+        print("Sign button detected, performing additional clicks...")
+        # Click at one of the specified locations
+        click_locations_sign_1 = [(1202, 231), (1210, 231), (1218, 232), (1209, 234)]
+        click_at(*random.choice(click_locations_sign_1))
+        time.sleep(4)
+        # Click at the second set of locations
+        click_locations_sign_2 = [(607, 500), (629, 502), (654, 499), (671, 500),
+                                  (688, 501), (702, 502), (721, 502), (745, 501), (771, 500)]
+        click_at(*random.choice(click_locations_sign_2))
+        time.sleep(6)
+    else:
+        print("Sign button not detected, proceeding to Step 1-a...")
+except Exception as e:
+    print(f"Error detecting sign button: {e}")
+    print("Proceeding to Step 1-a...")
+
+# Step 1-a:
 click_locations_1 = [(1326, 183), (1336, 184), (1341, 182), (1333, 189), (1332, 174)]
 click_at(*random.choice(click_locations_1))
 time.sleep(2)
@@ -43,8 +63,8 @@ pyautogui.press("enter")
 time.sleep(random.uniform(4, 5))
 for _ in range(7):
     pyautogui.press("down")
-time.sleep(2)
-click_locations_2 = [(85, 477), (103, 407), (121, 478), (145, 477), 
+time.sleep(3)
+click_locations_2 = [(85, 477), (105, 475), (121, 478), (145, 477), 
                      (181, 477), (208, 477), (231, 478), (268, 479)]
 click_at(*random.choice(click_locations_2))
 time.sleep(3)

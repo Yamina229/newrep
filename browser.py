@@ -13,6 +13,7 @@ def wait_for_browser_button(image_path='browser_button.png', confidence_level=0.
         button_location = pyautogui.locateCenterOnScreen(image_path, confidence=confidence_level, grayscale=True)
         if button_location:
             print(f"{image_path} found at {button_location}. Clicking...")
+            time.sleep(3)
             pyautogui.click(button_location)
             sys.exit(0)  # Exit successfully once button is found
         

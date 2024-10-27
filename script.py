@@ -147,8 +147,8 @@ click_locations_11 = [(50, 393), (63, 394), (82, 391), (108, 393),
 click_at(*random.choice(click_locations_11))
 time.sleep(8)
 # Perform random mouse click on second set of predefined locations (Click Location 12)
-click_locations_12 = [(1232, 290), (1260, 291), (1274, 289), (1292, 289), 
-                      (1307, 288), (1316, 290), (1260, 290)]
+click_locations_12 = [(1226, 273), (1248, 274), (1261, 274), (1275, 272), 
+                      (1288, 273), (1299, 273), (1313, 273), (1324, 273)]
 click_at(*random.choice(click_locations_12))
 time.sleep(2)
 # Step 10: Press the Tab key 11 times, with a 1-second delay between each press

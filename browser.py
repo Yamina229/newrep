@@ -22,13 +22,20 @@ def wait_for_browser_button(image_path='browser_button.png', confidence_level=0.
             pyautogui.rightClick(753, 509)
             time.sleep(1)
             
-            # Step 3: Press down arrow key
-            pyautogui.press("down")
-            
-            # Step 4: Press Enter key
+            # Step 3: Press down arrow key 5 times with a 1-second delay between each press, then press Enter
+            for _ in range(5):
+                pyautogui.press("down")
+                time.sleep(1)
             pyautogui.press("enter")
             
-            # Step 5: Sleep for 2 seconds
+            # Step 4: Open a new tab in Firefox, paste clipboard content, and press Enter
+            pyautogui.hotkey("ctrl", "t")  # Open a new tab
+            time.sleep(1)
+            pyautogui.hotkey("ctrl", "v")  # Paste clipboard content
+            time.sleep(1)
+            pyautogui.press("enter")
+            
+            # Final Step: Sleep for 2 seconds
             time.sleep(2)
 
             sys.exit(0)  # Exit successfully once actions are complete

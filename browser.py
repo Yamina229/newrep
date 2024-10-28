@@ -27,7 +27,9 @@ def wait_for_browser_button(image_path='browser_button.png', confidence_level=0.
                 pyautogui.press("down")
                 time.sleep(1)
             pyautogui.press("enter")
+            time.sleep(1)
             pyautogui.click(668, 457)
+            time.sleep(1)
             # Step 4: Open a new tab in Firefox, paste clipboard content, and press Enter
             pyautogui.hotkey("ctrl", "t")  # Open a new tab
             time.sleep(1)

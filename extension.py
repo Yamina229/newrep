@@ -22,9 +22,10 @@ pyautogui.press("enter")
 
 # Step 7: Sleep for 6 seconds to allow the page to load
 time.sleep(6)
-
+pyautogui.click(99, 174)
+time.sleep(2)
 # Step 8: Press Tab 13 times, with a 1-second delay between each press
-for _ in range(13):
+for _ in range(8):
     pyautogui.press("tab")
     time.sleep(1)
 

@@ -12,10 +12,26 @@ def wait_for_browser_button(image_path='browser_button.png', confidence_level=0.
     while True:  # Loop until timeout or button is found
         button_location = pyautogui.locateCenterOnScreen(image_path, confidence=confidence_level, grayscale=True)
         if button_location:
-            print(f"{image_path} found at {button_location}. Clicking...")
-            time.sleep(3)
-            pyautogui.click(button_location)
-            sys.exit(0)  # Exit successfully once button is found
+            print(f"{image_path} found at {button_location}. Performing actions...")
+            
+            # Step 1: Click at (742, 458)
+            pyautogui.click(742, 458)
+            time.sleep(2)
+            
+            # Step 2: Right-click at (753, 509)
+            pyautogui.rightClick(753, 509)
+            time.sleep(1)
+            
+            # Step 3: Press down arrow key
+            pyautogui.press("down")
+            
+            # Step 4: Press Enter key
+            pyautogui.press("enter")
+            
+            # Step 5: Sleep for 2 seconds
+            time.sleep(2)
+
+            sys.exit(0)  # Exit successfully once actions are complete
         
         # Check if the timeout has been reached
         if time.time() - start_time > timeout:

@@ -1,7 +1,7 @@
 import pyautogui
 import time
 import subprocess
-time.sleep(10)
+
 def detect_button_via_script(script_name):
     """Run an external script to detect a button and keep trying until it succeeds."""
     while True:  # Loop until the button is found
@@ -22,18 +22,23 @@ if __name__ == "__main__":
     print("Main button detected and clicked. Waiting for page to load...")
     time.sleep(10)  # Wait for the page to load
 
-    # Step 2: Press Tab 19 times and type the docker command
+    # Step 2: Press Tab 19 times and type the Docker command
     for _ in range(19):
         pyautogui.press("tab")
     pyautogui.write("docker run -p 6500:80 dorowu/ubuntu-desktop-lxde-vnc")
     time.sleep(5)
     pyautogui.press("enter")
     print("Docker command typed and executed.")
+    time.sleep(4)
+    # Step 3: Run error.py before detecting the browser button
+    print("Running error.py before Step 3...")
+    subprocess.run(['python3', 'error.py'])  # Run error.py
+    time.sleep(25)  # Wait after running error.py
 
-    # Step 3: Detect the browser button via browser.py script
-    time.sleep(25)
+    # Detect the browser button via browser.py script
     detect_button_via_script('browser.py')
     time.sleep(5)
+
     # Step 4: Detect the desktop button via desktop.py script
     detect_button_via_script('desktop.py')
 
@@ -56,5 +61,3 @@ if __name__ == "__main__":
     pyautogui.write("bash kok")
     pyautogui.press("enter")
     time.sleep(5)
- 
-    

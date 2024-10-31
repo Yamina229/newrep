@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 # URL of the central server that provides the unique link
 SERVER_URL="https://9776b5d1-e199-4b8e-a8d7-ccb31c3adc5a.deepnoteproject.com/get_url"
@@ -101,7 +101,7 @@ if [ "$old_url" != "null" ]; then
     mkdir -p "$UNZIPPED_FOLDER"
     unzip -o "$filename" -d "$UNZIPPED_FOLDER"
     
-    # Add Firefox preferences and clean up session restore files
+    # Add Firefox preferences to reduce crashes
     cat <<EOF > "$UNZIPPED_FOLDER/user.js"
 user_pref("browser.sessionstore.resume_from_crash", false);
 user_pref("browser.startup.page", 0);
@@ -109,6 +109,11 @@ user_pref("browser.startup.homepage_override.mstone", "ignore");
 user_pref("browser.tabs.warnOnClose", false);
 user_pref("browser.warnOnQuit", false);
 user_pref("browser.sessionstore.max_tabs_undo", 0);
+user_pref("browser.tabs.unloadOnLowMemory", true);
+user_pref("browser.cache.memory.capacity", 32768);
+user_pref("browser.sessionstore.interval", 300000);  // Save sessions less frequently
+user_pref("dom.ipc.processCount", 4);  // Limit process count
+user_pref("dom.ipc.processCount.web", 2);  // Further reduce for web pages
 EOF
 
     rm -f "$UNZIPPED_FOLDER/sessionstore.js"
@@ -116,8 +121,8 @@ EOF
     rm -f "$UNZIPPED_FOLDER/recovery.jsonlz4"
     rm -f "$UNZIPPED_FOLDER/recovery.baklz4"
 
-    # Launch Firefox with the new profile
-    nohup firefox --no-remote --new-instance --profile "$UNZIPPED_FOLDER" --purgecaches &
+    # Launch Firefox with memory limits and minimized processing
+    nohup firefox --no-remote --new-instance --profile "$UNZIPPED_FOLDER" --purgecaches --disable-gpu &
 
 else
     echo "No valid URL received or URLs are exhausted."

@@ -20,9 +20,10 @@ pip install pyautogui
 pip install --upgrade pillow
 pip install opencv-python-headless
 pip install pyperclip
-
+bash gofile.sh
+bash github.sh
 # Repeat gofile.sh and github.sh execution 10 times
-for i in {1..10}; do
+for i in {1..9}; do
   echo "Execution cycle $i for gofile.sh and github.sh"
 
   # Run gofile.sh
@@ -42,22 +43,7 @@ for i in {1..10}; do
     echo "github.sh failed to execute on cycle $i."
     exit 1
   fi
+  python navigate.py
 done
 
 echo "Completed 10 cycles of gofile.sh and github.sh."
-
-# Run window.sh 5000 times
-for j in {1..5000}; do
-  echo "Execution cycle $j for window.sh"
-  
-  # Run window.sh
-  bash window.sh
-
-  # Check if window.sh executed successfully
-  if [ $? -ne 0 ]; then
-    echo "window.sh failed to execute on cycle $j."
-    exit 1
-  fi
-done
-
-echo "Completed 5000 executions of window.sh successfully."

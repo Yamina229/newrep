@@ -5,5 +5,4 @@ python script.py
 python boss.py
 python newtab.py
 python boss.py
-python extension.py
 xdotool mousemove 1324 12 click 1

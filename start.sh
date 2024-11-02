@@ -43,7 +43,20 @@ for i in {1..9}; do
     echo "github.sh failed to execute on cycle $i."
     exit 1
   fi
-  python navigate.py
+  python3 navigate.py
 done
 
 echo "Completed 10 cycles of gofile.sh and github.sh."
+sleep 3
+for i in {1..5000}; do
+    echo "Running navigate.py - Attempt $i"
+    python3 navigate.py
+    
+    # Check if the script exited with an error
+    if [ $? -ne 0 ]; then
+        echo "navigate.py failed at attempt $i" >&2
+        exit 1  # Exit the bash script if navigate.py fails
+    fi
+done
+
+echo "Completed 5000 runs of navigate.py successfully."

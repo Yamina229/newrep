@@ -73,6 +73,9 @@ for _ in range(30):
 time.sleep(2)
 click_locations_3 = [(393, 387), (400, 388), (404, 388), (408, 387)]
 click_at(*random.choice(click_locations_3))
+time.sleep(1)
+pyautogui.hotkey('ctrl', 'a')
+time.sleep(1)
 pyautogui.write("240")
 time.sleep(2)
 click_locations_4 = [(526, 390), (540, 386), (552, 387), (562, 389), (545, 393)]

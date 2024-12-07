@@ -38,7 +38,7 @@ try:
     if sign_button_location is not None:
         print("Sign button detected, performing additional clicks...")
         # Click at one of the specified locations
-        click_locations_sign_1 = [(1202, 231), (1210, 231), (1218, 232), (1209, 234)]
+        click_locations_sign_1 = [(1200, 189), (1209,189), (1215, 189), (1218, 190), (1225, 190), (1232,190)]
         click_at(*random.choice(click_locations_sign_1))
         time.sleep(4)
         # Click at the second set of locations

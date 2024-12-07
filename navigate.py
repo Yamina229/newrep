@@ -38,7 +38,7 @@ def navigate_four_tabs():
 
     # Second tab: Refresh, then wait
     pyautogui.hotkey('ctrl', 'tab')
-    time.sleep1)
+    time.sleep(1)
     pyautogui.click(95, 82)  # Refresh the page
     time.sleep(WAIT_TIME)
 
